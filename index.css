@@ -1,21 +1,27 @@
-/* Body & Centering */
+/* ===============================
+   Page & Centering
+   =============================== */
 body {
     background-color: #ffc3da;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Wrapper to control vertical spacing */
+.page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 140px; /* adjust this to move envelope up/down */
 }
 
 /* Envelope wrapper */
 .envelope-wrapper {
-    width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 140px;      /* envelope a bit lower */
-    position: relative;      /* for hearts */
+    align-items: flex-start; /* so letter pops out */
+    position: relative;
 }
 
 /* Envelope */
@@ -26,7 +32,7 @@ body {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     background-color: #FF6863;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     cursor: pointer;
 }
 
@@ -53,6 +59,7 @@ body {
     border-top: 90px solid transparent;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    overflow: hidden;
 }
 
 /* Letter */
@@ -60,18 +67,21 @@ body {
     position: relative;
     background-color: #fffaf4;
     width: 90%;
-    height: 180px;           /* reasonable letter height */
+    max-width: 250px;
+    height: 200px; /* more space for scrolling */
     top: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 26px rgba(0,0,0,0.12);
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; /* keeps content inside */
+    z-index: 2;
 }
 
+/* Letter content scroll */
 .letter-content {
     height: 100%;
     padding: 16px;
-    overflow-y: auto;
+    overflow-y: auto; /* allow scroll */
     box-sizing: border-box;
 
     font-family: 'Dancing Script', cursive;
@@ -105,30 +115,29 @@ body {
 }
 
 .open .letter {
-    transform: translateY(-180px);  /* pops letter just above envelope */
+    transform: translateY(-180px); /* more pop out */
     transition: transform 0.4s 0.6s ease, z-index 0.6s;
-    z-index: 2;
 }
 
 .close .letter {
     transform: translateY(0);
     transition: transform 0.4s ease, z-index 1s;
-    z-index: 1;
 }
 
 /* Hearts */
 .hearts {
     position: absolute;
-    bottom: 0;
+    top: 80px;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
 }
 
 .heart {
     position: absolute;
     bottom: 0;
+    right: 10%;
     opacity: 0;
 }
 
@@ -157,7 +166,6 @@ body {
     animation: none;
 }
 
-/* Heart Animations */
 .open .a1 {
     left: 20%;
     transform: scale(0.6);
@@ -180,14 +188,14 @@ body {
     left: 10%;
     transform: scale(0.8);
     opacity: 1;
-    animation: slideUp 6s linear 1, sideSway 2s ease-in-out 6 alternate;
+    animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
     animation-fill-mode: forwards;
     animation-delay: 0.7s;
 }
 
 @keyframes slideUp {
-    0% { bottom: 0; }
-    100% { bottom: 500px; }   /* hearts pop nicely */
+    0% { top: 0; }
+    100% { top: -600px; }
 }
 
 @keyframes sideSway {
@@ -230,6 +238,6 @@ body {
 .valentine {
     text-align: center;
     font-size: 50px;
-    color: rgb(20, 20, 20);
+    color: rgb(20,20,20);
     margin: 50px;
 }
