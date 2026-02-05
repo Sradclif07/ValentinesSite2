@@ -13,9 +13,9 @@ body {
 .envelope-wrapper {
     height: 380px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 120px;      
+    justify-content: center;  /* horizontal centering */
+    align-items: flex-start;  /* move envelope to top */
+    margin-top: 80px;         /* adjust spacing from top of screen */
 }
 
 /* Envelope */
@@ -105,7 +105,7 @@ body {
 }
 
 .open .letter {
-    transform: translateY(-140px);
+    transform: translateY(-180px);  /* pops further out */
     transition: transform 0.4s 0.6s ease, z-index 0.6s;
     z-index: 2;
 }
