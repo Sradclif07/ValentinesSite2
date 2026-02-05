@@ -11,11 +11,11 @@ body {
 
 /* Envelope wrapper */
 .envelope-wrapper {
-    height: 380px;
+    width: 100%;
     display: flex;
     justify-content: center;  /* horizontal centering */
-    align-items: flex-start;  /* move envelope to top */
     margin-top: 80px;         /* adjust spacing from top of screen */
+    position: relative;       /* needed for hearts positioning */
 }
 
 /* Envelope */
@@ -119,7 +119,7 @@ body {
 /* Hearts */
 .hearts {
     position: absolute;
-    top: 90px;
+    bottom: 0;               /* start hearts at bottom of envelope */
     left: 0;
     right: 0;
     z-index: 2;
@@ -128,9 +128,8 @@ body {
 
 .heart {
     position: absolute;
-    bottom: 0;
-    right: 10%;
-    opacity: 0; 
+    bottom: 0;              /* start inside envelope */
+    opacity: 0;
 }
 
 .heart:before,
@@ -158,6 +157,7 @@ body {
     animation: none;
 }
 
+/* Heart Animations */
 .open .a1 {
     left: 20%;
     transform: scale(0.6);
@@ -186,8 +186,8 @@ body {
 }
 
 @keyframes slideUp {
-    0% { top: 0; }
-    100% { top: -600px; }
+    0% { bottom: 0; }          /* hearts start inside envelope */
+    100% { bottom: 600px; }    /* move upwards */
 }
 
 @keyframes sideSway {
@@ -233,3 +233,4 @@ body {
     color: rgb(20, 20, 20);
     margin: 50px;
 }
+
